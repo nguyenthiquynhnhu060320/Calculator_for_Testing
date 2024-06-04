@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calculator
 {
-    internal class Calculation
+    public class Calculation
     {
         private int a, b;
         public Calculation(int a, int b )

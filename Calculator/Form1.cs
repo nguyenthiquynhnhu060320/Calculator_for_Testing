@@ -26,5 +26,35 @@ namespace Calculator
             result = c.Exectute("+");
             result1.Text = result.ToString();
         }
+
+        private void btsubtract_Click(object sender, EventArgs e)
+        {
+            int a, b, result;
+            a = int.Parse(nub1.Text);
+            b = int.Parse(nub2.Text);
+            Calculation c = new Calculation(a, b);
+            result = c.Exectute("-");
+            result1.Text = result.ToString();
+        }
+
+        private void btmutl_Click(object sender, EventArgs e)
+        {
+            int a, b, result;
+            a = int.Parse(nub1.Text);
+            b = int.Parse(nub2.Text);
+            Calculation c = new Calculation(a, b);
+            result = c.Exectute("*");
+            result1.Text = result.ToString();
+        }
+
+        private void btdiv_Click(object sender, EventArgs e)
+        {
+            int a, b, result;
+            a = int.Parse(nub1.Text);
+            b = int.Parse(nub2.Text);
+            Calculation c = new Calculation(a, b);
+            result = c.Exectute("/");
+            result1.Text = result.ToString();
+        }
     }
 }
