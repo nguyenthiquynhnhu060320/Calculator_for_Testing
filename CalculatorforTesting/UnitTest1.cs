@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Data;
 using Calculator;
 namespace CalculatorforTesting
 {
@@ -8,7 +9,8 @@ namespace CalculatorforTesting
     public class UnitTest1
     {
         private Calculation c; 
-
+        public TestContext testContext;
+        public TestContext TestContext { get; set; }
         [TestInitialize] // thiết lập general database 
         public void Setup()
         {
@@ -46,5 +48,20 @@ namespace CalculatorforTesting
             actual = c.Exectute("/");
             Assert.AreEqual(expected, actual);
         }
+        // connectiong data project
+        
+        [TestMethod]// testcase 1
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @".\Data\TestData.csv", "TestData#csv", DataAccessMethod.Sequential)]
+        public void TestAddDatasource()
+        {
+            int a, b, expected, actual; // ket qua thuc te va kết quả mong đợi
+            a = int.Parse(testContext.DataRow[0].ToString());
+            b = int.Parse(testContext.DataRow[1].ToString());
+            expected = int.Parse(testContext.DataRow[2].ToString());
+            c = new Calculation(a, b);
+            actual = c.Exectute("+");
+            Assert.AreEqual(expected, actual);
+        }
+        
     }
 }
